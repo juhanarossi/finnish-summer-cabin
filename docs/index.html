@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+</head>
+
+<body>
+    <div class="title-content">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap">
+        <div class="body-text">
+            <h1>Return to Your <br>
+                Summer Cabin</h1>
+
+            <h3>As days grow longer and warmer, a new summer cabin season beckons. Before you can relax at you
+                off-the-grid Shangri-La, put it in working order.</h3>
+        </div>
+    </div>
+        <div class="outerContainer">
+    
+    
+            <div id="controls" class="buttons">
+              <a id="rewind" title="Restart story from beginning">restart</a>
+              <a id="save" title="Save progress">save</a>
+              <a id="reload" title="Reload from save point">load</a>
+              <a id="theme-switch" title="Switch theme">theme</a>
+            </div>
+    
+            <div id="story" class="body-text">
+            </div>
+        </div>
+    
+        <script src="ink.js"></script>
+        <script src="summer_cabin.js"></script>
+        <script src="main.js"></script>
+    <div class="body-text">
+        <p>
+            Vita rustica in agro inter Pinus silvestris et Betula pendula multas delicias offert. In huiusmodi locis,
+            animi tranquillitas et serenitas inveniuntur. Natura virens et pulchra nos in simplicitatem vitae reducit,
+            longe a tumultu et strepitu urbium.
+
+            In agro inter Pinus silvestris et Betula pendula, sentimus nos esse cum antecessoribus nostris, qui agros
+            colebant et in silvis habitabant. Aves cantantes et frondes susurrantes vento actae, musica naturae dulcis,
+            nos in somnum lenem inducunt. Aquis puris et fontibus limpidis potamus, quae vitam et sanitatem nobis
+            conferunt.
+        </p>
+    </div>
+    <section id="scrolly" class="scrolly-container">
+        <div class="sticky-thing">
+            <img src="pics/privy.jpg">
+        </div>
+
+        <div class="steps-container">
+            <div class="step">
+                <p>Outfit your privy with toilet paper and additive made of wood discards and peat moss.</p>
+            </div>
+            <div class="step" id="step2">
+                <p>Cut and split firewood and stack it to season now so that it's ready for use by next summer.</p>
+            </div>
+            <div class="step" id="step3">
+                <p>Remove the protective cover from the opening of the chimney's flue.</p>
+            </div>
+            <div class="step" id="step4">
+                <p>Connect full gas cylinders to your gas-powered stove and refrigerator.</p>
+            </div>
+        </div>
+    </section>
+    <div class="body-text">
+        <p>
+            Vita rustica in agro inter Pinus silvestris et Betula pendula multas delicias offert. In huiusmodi locis,
+            animi tranquillitas et serenitas inveniuntur. Natura virens et pulchra nos in simplicitatem vitae reducit,
+            longe a tumultu et strepitu urbium.
+
+            In agro inter Pinus silvestris et Betula pendula, sentimus nos esse cum antecessoribus nostris, qui agros
+            colebant et in silvis habitabant. Aves cantantes et frondes susurrantes vento actae, musica naturae dulcis,
+            nos in somnum lenem inducunt. Aquis puris et fontibus limpidis potamus, quae vitam et sanitatem nobis
+            conferunt.
+        </p>
+        <iframe title="Summer Cabin in Kuusenhako" aria-label="Locator maps" id="datawrapper-chart-uUoHG"
+            src="https://datawrapper.dwcdn.net/uUoHG/1/" scrolling="no" frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;" height="400" data-external="1"></iframe>
+        <script type="text/javascript">!function () { "use strict"; window.addEventListener("message", (function (a) { if (void 0 !== a.data["datawrapper-height"]) { var e = document.querySelectorAll("iframe"); for (var t in a.data["datawrapper-height"]) for (var r = 0; r < e.length; r++)if (e[r].contentWindow === a.source) { var i = a.data["datawrapper-height"][t] + "px"; e[r].style.height = i } } })) }();
+        </script>
+        <p>
+            Vita rustica in agro inter Pinus silvestris et Betula pendula multas delicias offert. In huiusmodi locis,
+            animi tranquillitas et serenitas inveniuntur. Natura virens et pulchra nos in simplicitatem vitae reducit,
+            longe a tumultu et strepitu urbium.
+
+            In agro inter Pinus silvestris et Betula pendula, sentimus nos esse cum antecessoribus nostris, qui agros
+            colebant et in silvis habitabant. Aves cantantes et frondes susurrantes vento actae, musica naturae dulcis,
+            nos in somnum lenem inducunt. Aquis puris et fontibus limpidis potamus, quae vitam et sanitatem nobis
+            conferunt.
+        </p>
+    </div>
+
+    <script>
+
+        //  scrollytelling code goes here
+        d3.select("#step2").on('stepin', function () {
+            d3.select("img").attr("src", "pics/wood.jpg")
+        })
+
+        d3.select("#step3").on('stepin', function () {
+            d3.select("img").attr("src", "pics/chimney.jpg")
+        })
+
+        d3.select("#step4").on('stepin', function () {
+            d3.select("img").attr("src", "pics/gas.jpg")
+        })
+
+    </script>
+
+    <script>
+        const scroller = scrollama()
+
+        scroller
+            .setup({
+                step: "#scrolly .steps-container .step",
+                offset: 0.75,
+                //debug: true,
+            })
+            .onStepEnter(function ({ element, index, direction }) {
+                const event = new CustomEvent("stepin", { detail: { direction: direction } })
+                element.dispatchEvent(event)
+            })
+            .onStepExit(function ({ element, index, direction }) {
+                const event = new CustomEvent("stepout", { detail: { direction: direction } })
+                element.dispatchEvent(event)
+            })
+
+        window.addEventListener("resize", scroller.resize)
+    </script>
+</body>
+
+</html>
